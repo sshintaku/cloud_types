@@ -12,6 +12,7 @@ type DiscoveryResult struct {
 	Region       string          `json:"region"`
 	Registry     string          `json:"registry"`
 	ServiceType  string          `json:"serviceType"`
+	Name         string          `json:"name"`
 }
 
 type CloudTypeResult struct {
