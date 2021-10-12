@@ -29,4 +29,5 @@ type CloudEntities struct {
 	NodesCount          int    `json:"nodesCount"`
 	Defended            bool   `json:"defended"`
 	Status              string `json:"status"`
+	Name		    string `json:"name"`
 }
