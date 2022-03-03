@@ -75,3 +75,103 @@ type InputArray struct {
 type Twistlock struct {
 	BaseURI string `json:"twistlockUrl"`
 }
+
+type scanResult struct {
+	Id              string           `json:"_id"`
+	Collections     []string         `json:"collections"`
+	AllCompliance   ComplianceIssues `json:"allCompliance"`
+	Vulnerabilities []Vulnerable     `json:"vulnerabilities"`
+}
+
+type ComplianceIssues struct {
+	Compliance []ComplianceAttributes `json:"compliance"`
+}
+
+type ComplianceAttributes struct {
+	Id             int    `json:"id"`
+	Severity       string `json:"severity"`
+	Description    string `json:"description"`
+	Title          string `json:"title"`
+	PackageName    string `json:"packageNAme"`
+	PackageVersion string `json:"packageVersion"`
+}
+
+type Vulnerable struct {
+	CVE             string   `json:"cve"`
+	Exploit         []string `json:"exploit"`
+	ApplicableRules []string `json:"applicableRules"`
+	Description     string   `json:"description"`
+	Block           bool     `json:"block"`
+	Cause           string   `json:"cause"`
+}
+
+type ComplianceObject struct {
+	Type string `json:"type"`
+
+	ComplianceIssues    []Compliance    `json:"complianceIssues"`
+	VulnerabilityIssues []Vulnerability `json:"vulnerabilities"`
+	Clusters            []string        `json:"clusters"`
+	Labels              []string        `json:"labels"`
+	PackageList         []PackageInfo   `json:"packages"`
+	RepoTags            RepoTag         `json:"repoTag"`
+}
+
+type RepoTag struct {
+	Registry string `json:"registry"`
+	Repo     string `json:"repo"`
+	Tag      string `json:"tag"`
+}
+
+type PackageInfo struct {
+	PackageType string    `json:"pkgsType"`
+	Packages    []Package `json:"pkgs"`
+}
+
+type Package struct {
+	Version  string `json:"version"`
+	CveCount int16  `json:"cveCount"`
+	Name     string `json:"name"`
+}
+
+type Vulnerability struct {
+	Severity       string `json:"severity"`
+	CVE            string `json:"cve"`
+	PackageName    string `json:"packagename"`
+	PackageVersion string `json:"packageversion"`
+	Description    string `json:"description"`
+	Status         string `json:"status"`
+	Type           string `json:"type"`
+	FixDate        int64  `json:fixDate`
+}
+
+type Compliance struct {
+	Severity       string `json:"severity"`
+	CVE            string `json:"cve"`
+	Cause          string `json:"cause"`
+	Description    string `json:"description"`
+	Title          string `json:"title"`
+	PackageName    string `json:"packageName"`
+	PackageVersion string `json:"packageVersion"`
+	FixDate        int64  `json:fixDate`
+}
+
+type MaintainerSummary struct {
+	ClusterName          []string
+	Registry             string
+	Repository           string
+	Package              string
+	PackageType          string
+	FixDate              string
+	ComplianceSummary    AlarmCounter
+	VulnerabilitySummary AlarmCounter
+}
+
+type AlarmCounter struct {
+	Critical  int
+	High      int
+	Important int
+	Medium    int
+	Moderate  int
+	Low       int
+}
+
