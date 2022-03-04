@@ -134,14 +134,16 @@ type Package struct {
 }
 
 type Vulnerability struct {
-	Severity       string `json:"severity"`
-	CVE            string `json:"cve"`
-	PackageName    string `json:"packagename"`
-	PackageVersion string `json:"packageversion"`
-	Description    string `json:"description"`
-	Status         string `json:"status"`
-	Type           string `json:"type"`
-	FixDate        int64  `json:fixDate`
+	Severity       string  `json:"severity"`
+	CVE            string  `json:"cve"`
+	PackageName    string  `json:"packagename"`
+	PackageVersion string  `json:"packageversion"`
+	Description    string  `json:"description"`
+	Status         string  `json:"status"`
+	Type           string  `json:"type"`
+	FixDate        int64   `json:"fixDate"`
+	CVSS           float32 `json:"cvss"`
+	Link           string  `json:"link"`
 }
 
 type Compliance struct {
@@ -162,6 +164,10 @@ type MaintainerSummary struct {
 	Package              string
 	PackageType          string
 	FixDate              string
+	CVE                  string
+	CVSS                 float32
+	Link                 string
+	Description          string
 	ComplianceSummary    AlarmCounter
 	VulnerabilitySummary AlarmCounter
 }
@@ -174,4 +180,3 @@ type AlarmCounter struct {
 	Moderate  int
 	Low       int
 }
-
