@@ -163,6 +163,9 @@ type MaintainerSummary struct {
 	Repository           string
 	Package              string
 	PackageType          string
+	Type                 string
+	Cause                string
+	Title                string
 	FixDate              string
 	CVE                  string
 	CVSS                 float32
