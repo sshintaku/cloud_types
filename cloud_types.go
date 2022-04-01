@@ -200,7 +200,7 @@ type ImageOutput struct {
 
 func (i *ImageInfo) GetImageTags(imageData *[]ComplianceObject) {
 	for _, data := range *imageData {
-		if i.image == data.RepoTags.Repo {
+		if i.Image == data.RepoTags.Repo {
 			for _, label := range data.Labels {
 				match, _ := regexp.MatchString("^tas-org-name", label)
 				if match {
