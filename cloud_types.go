@@ -1,5 +1,7 @@
 package cloud_types
 
+import "regexp"
+
 type JwtToken struct {
 	Token string `json:"token"`
 }
@@ -182,4 +184,35 @@ type AlarmCounter struct {
 	Medium    int
 	Moderate  int
 	Low       int
+}
+
+type ImageInfo struct {
+	image              string
+	host               string
+	container          string
+	TasOrgName         string
+	TasApplicationName string
+}
+
+type ImageOutput struct {
+	RiskTree map[string]interface{} `json:"riskTree"`
+}
+
+func (i *ImageInfo) GetImageTags(imageData *[]ComplianceObject) {
+	for _, data := range *imageData {
+		if i.image == data.RepoTags.Repo {
+			for _, label := range data.Labels {
+				match, _ := regexp.MatchString("^tas-org-name", label)
+				if match {
+					i.TasOrgName = label
+				}
+				match2, _ := regexp.MatchString("^tas-application-name", label)
+				if match2 {
+					i.TasApplicationName = label
+				}
+
+			}
+			return
+		}
+	}
 }
