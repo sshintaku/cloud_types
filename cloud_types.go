@@ -187,9 +187,9 @@ type AlarmCounter struct {
 }
 
 type ImageInfo struct {
-	image              string
-	host               string
-	container          string
+	Image              string `json:"image"`
+	Host               string `json:"host"`
+	Container          string `json:"container"`
 	TasOrgName         string
 	TasApplicationName string
 }
