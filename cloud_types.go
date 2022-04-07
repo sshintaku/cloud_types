@@ -1,7 +1,6 @@
 package cloud_types
 
 import (
-	"fmt"
 	"regexp"
 )
 
@@ -208,26 +207,18 @@ func (i *ImageInfo) GetContainerTags(containerData *[]ContainerInfo) {
 func (i *ImageInfo) GetImageTags(imageData []ComplianceObject) {
 	for _, data := range imageData {
 		if i.Image == data.RepoTags.Repo {
-			if i.Image == "demand-impact-baseline-event-service-release-green" {
-				fmt.Println("Found it.")
-			}
 			for _, label := range data.Labels {
 				match, _ := regexp.MatchString("^tas-org-name", label)
 				if match {
 					i.TasOrgName = label
-					//flag = true
 				}
 				match2, _ := regexp.MatchString("^tas-application-name", label)
 				if match2 {
 					i.TasApplicationName = label
-					//flag = true
 				}
 
 			}
 
 		}
-		/* if flag {
-			return
-		} */
 	}
 }
