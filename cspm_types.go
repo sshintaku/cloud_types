@@ -78,6 +78,8 @@ type ResourceModel struct {
 	CloudServiceName      string                 `json:"cloudServiceName"`
 	CloudAccountGroups    []string               `json:"cloudAccountGroups"`
 	CloudAccountOwners    []string               `json:"cloudAccountOwners"`
+	ResourceType          string                 `json:"resourceType"`
+	ResourceApiName       string                 `json:"resourceApiName"`
 }
 
 type PolicyModel struct {

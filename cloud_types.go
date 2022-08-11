@@ -118,6 +118,7 @@ type ComplianceObject struct {
 	Labels              []string        `json:"labels"`
 	PackageList         []PackageInfo   `json:"packages"`
 	RepoTags            RepoTag         `json:"repoTag"`
+	Collections         []string        `json:"collections"`
 }
 
 type RepoTag struct {
