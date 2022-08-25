@@ -62,6 +62,30 @@ type EC2Data struct {
 	SecuirtyGroups   []SecurityGroup `json:"securityGroups"`
 	PrivateIPAddress string          `json:"privateIpAddress"`
 	PublicIPAddress  string          `json:"publicIpAddress"`
+	InstanceId       string          `json:"instanceId"`
+	Rrn              RRN
+}
+
+type RRN struct {
+	Rrn string `json:"rrn"`
+}
+
+type Investigate struct {
+	Query     string     `json:"query"`
+	TimeRange TimeStruct `json:"timeRange"`
+}
+
+type TimeStruct struct {
+	Type  string     `json:"type"`
+	Value DateStruct `json:"value"`
+}
+type DateStruct struct {
+	Unit   string `json:"unit"`
+	Amount int    `json:"amount"`
+}
+
+type TimeRange struct {
+	Type string `json:"type"`
 }
 
 type SecurityGroup struct {
@@ -80,6 +104,8 @@ type ResourceModel struct {
 	CloudAccountOwners    []string               `json:"cloudAccountOwners"`
 	ResourceType          string                 `json:"resourceType"`
 	ResourceApiName       string                 `json:"resourceApiName"`
+	Region                string                 `json:"region"`
+	RegionId              string                 `json:"regionId"`
 }
 
 type PolicyModel struct {
