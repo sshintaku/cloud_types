@@ -152,3 +152,33 @@ type ComplianceMetadataModel struct {
 	StandardDescription    string `json:"standardDescription"`
 	StandardName           string `json:"standardName"`
 }
+
+type RQLType struct {
+	CloudType string    `json:"cloudType"`
+	Data      ItemArray `json:""`
+}
+
+type ItemArray struct {
+	Items []ItemStruct `json:"items"`
+}
+
+type ItemStruct struct {
+	AccountGroupName string      `json:"accountGroupName"`
+	AccountId        string      `json:"accountId"`
+	AccountName      string      `json:"accountName"`
+	Data             string      `json:"data"`
+	DynamicData      interface{} `json:"dynamicData"`
+	RRN              RRNStruct   `json:"rrn"`
+	Name             string      `json:"name"`
+	RegionId         string      `json:"regionId"`
+	RegionName       string      `json:"regionName"`
+	ResourceType     string      `json:"resourceType"`
+}
+
+type RRNStruct struct {
+	AccountId  string `json:"accountId"`
+	CloudType  string `json:"cloudType"`
+	IdmapId    string `json:"idmapId"`
+	RegionId   string `json:"regionId"`
+	ResourceId string `json:"resourceId"`
+}
