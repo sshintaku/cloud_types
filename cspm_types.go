@@ -63,7 +63,13 @@ type EC2Data struct {
 	PrivateIPAddress string          `json:"privateIpAddress"`
 	PublicIPAddress  string          `json:"publicIpAddress"`
 	InstanceId       string          `json:"instanceId"`
-	Rrn              RRN
+	Rrn              RRN             `json:"rrn"`
+	Tags             []KeyValuePair  `json:"tags"`
+}
+
+type KeyValuePair struct {
+	Key   string `json:"key"`
+	Value string `json:"value"`
 }
 
 type RRN struct {
@@ -166,7 +172,7 @@ type ItemStruct struct {
 	AccountGroupName string      `json:"accountGroupName"`
 	AccountId        string      `json:"accountId"`
 	AccountName      string      `json:"accountName"`
-	Data             string      `json:"data"`
+	Data             interface{} `json:"data"`
 	DynamicData      interface{} `json:"dynamicData"`
 	RRN              RRNStruct   `json:"rrn"`
 	Name             string      `json:"name"`
