@@ -188,3 +188,8 @@ type RRNStruct struct {
 	RegionId   string `json:"regionId"`
 	ResourceId string `json:"resourceId"`
 }
+
+type RepoProperties struct {
+	Type string   `json:"type"`
+	Data []string `json:"data"`
+}
